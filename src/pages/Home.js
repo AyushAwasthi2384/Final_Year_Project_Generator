@@ -17,7 +17,7 @@ const Home = () => {
     switch (currentPage) {
       case 1:
         return (
-          <div className="space-y-4">
+          <div className="space-y-4" >
             <h2 className="text-xl font-semibold mb-4 text-left">Personal Information</h2>
             <InputField label="Full Name:" type="text" id="name" name="name" placeholder="Enter your full name" required />
             <SelectField
