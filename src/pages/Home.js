@@ -5,13 +5,20 @@ import RadioGroup from '../components/form/RadioGroup';
 import TextAreaField from '../components/form/TextAreaField';
 import ChecklistGroup from '../components/form/CheckListGroup';
 import ProgressBar from '../components/form/ProgressBar';
+import RangeSlider from '../components/form/RangeSlider';
 
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [proficiency1, setProficiency1] = useState();
+  const [proficiency2, setProficiency2] = useState();
+  const [proficiency3, setProficiency3] = useState();
+  const [proficiency4, setProficiency4] = useState();
+  const [proficiency5, setProficiency5] = useState();
+  const [proficiency6, setProficiency6] = useState();
   const totalPages = 7;
 
-  const handleNext = () => {setCurrentPage(prev => Math.min(prev + 1, 7)); window.scrollTo(0, 0);}
-  const handlePrevious = () => {setCurrentPage(prev => Math.max(prev - 1, 1)); window.scrollTo(0, 0);};
+  const handleNext = () => { setCurrentPage(prev => Math.min(prev + 1, 7)); window.scrollTo(0, 0); }
+  const handlePrevious = () => { setCurrentPage(prev => Math.max(prev - 1, 1)); window.scrollTo(0, 0); };
 
   const renderPage = () => {
     switch (currentPage) {
@@ -85,13 +92,67 @@ const Home = () => {
                 required
               />
             </div>
-            <InputField label="Rate Your Proficiency (1-5):" type="number" id="proficiency" name="proficiency" placeholder="Rate 1-5" required />
-            <TextAreaField label="Describe a Challenging Technical Project:" id="challengingProject" name="challengingProject" rows="3" required />
-            <InputField label="Open-Source Contributions:" type="text" id="openSource" name="openSource" placeholder="Enter details of open-source contributions" required />
-            <InputField label="Familiar Development Methodologies:" type="text" id="methodologies" name="methodologies" placeholder="Enter methodologies" required />
-            <InputField label="Experience with AI/ML Techniques:" type="text" id="aiMlTechniques" name="aiMlTechniques" placeholder="Enter AI/ML techniques" required />
-            <InputField label="Experience with Big Data Technologies:" type="text" id="bigDataTech" name="bigDataTech" placeholder="Enter big data technologies" required />
-            <InputField label="Experience with Software Testing and QA:" type="text" id="testing" name="testing" placeholder="Enter experience with testing and QA" required />
+            <RangeSlider
+              label="Rate Your Proficiency (1-5+):"
+              id="proficiency"
+              min={1}
+              max={5}
+              step={1}
+              value={proficiency1}
+              onChange={(e) => setProficiency1(e.target.value)}
+            />
+            <TextAreaField
+              label="Describe a Challenging Technical Project:"
+              id="challengingProject"
+              name="challengingProject"
+              rows="3"
+              required
+            />
+            <RangeSlider
+              label="Open-Source Contributions:"
+              id="openSource"
+              min={1}
+              max={5}
+              step={1}
+              value={proficiency2}
+              onChange={(e) => setProficiency2(e.target.value)}
+            />
+            <RangeSlider
+              label="Familiar Development Methodologies:"
+              id="methodologies"
+              min={1}
+              max={5}
+              step={1}
+              value={proficiency3}
+              onChange={(e) => setProficiency3(e.target.value)}
+            />
+            <RangeSlider
+              label="Experience with AI/ML Techniques:"
+              id="aiMlTechniques"
+              min={1}
+              max={5}
+              step={1}
+              value={proficiency4}
+              onChange={(e) => setProficiency4(e.target.value)}
+            />
+            <RangeSlider
+              label="Experience with Big Data Technologies:"
+              id="bigDataTech"
+              min={1}
+              max={5}
+              step={1}
+              value={proficiency5}
+              onChange={(e) => setProficiency5(e.target.value)}
+            />
+            <RangeSlider
+              label="Experience with Software Testing and QA:"
+              id="testing"
+              min={1}
+              max={5}
+              step={1}
+              value={proficiency6}
+              onChange={(e) => setProficiency6(e.target.value)}
+            />
           </div>
         );
       case 3:
@@ -296,7 +357,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300">
+    <div className="min-h-screen bg-gray-900 text-gray-300">
       <div className="container mx-auto p-6">
         <h1 className="text-2xl font-bold mb-6 text-center">Comprehensive Form</h1>
         <form className='w-3/4 mx-auto'>
